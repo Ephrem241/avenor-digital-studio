@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ButtonLink } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
 import { Section } from "@/components/ui/section";
@@ -29,10 +30,17 @@ export function ServicesOverview() {
         {/* Hairlines between items come from the 1px gap showing the list background. */}
         <ul data-reveal="" className="grid grid-cols-2 gap-px overflow-hidden bg-ivory-50/10 lg:col-span-7 lg:grid-cols-3">
           {services.map((service) => (
-            <li key={service.slug} className="flex flex-col gap-4 bg-charcoal-950 p-5 sm:p-6 lg:p-8">
-              <Icon name={service.icon} className="size-8 text-gold-500" />
-              <h3 className="font-sans text-body font-medium text-ivory-50">{service.name}</h3>
-              <p className="text-small text-stone-300">{service.summary}</p>
+            <li key={service.slug} className="bg-charcoal-950">
+              <Link
+                href={`/services#${service.slug}`}
+                className="group flex h-full flex-col gap-4 p-5 transition-colors duration-200 ease-standard hover:bg-charcoal-900 sm:p-6 lg:p-8"
+              >
+                <Icon name={service.icon} className="size-8 text-gold-500" />
+                <h3 className="font-sans text-body font-medium text-ivory-50 transition-colors group-hover:text-gold-400">
+                  {service.name}
+                </h3>
+                <p className="text-small text-stone-300">{service.summary}</p>
+              </Link>
             </li>
           ))}
         </ul>
