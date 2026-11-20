@@ -47,3 +47,7 @@ next-env.d.ts
 
 # Playwright MCP captures
 .playwright-mcp/
+
+# agent instructions and implementation prompts (local only)
+/AGENTS.md
+/prompts/
