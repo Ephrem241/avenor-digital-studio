@@ -5,12 +5,14 @@ import { Section } from "@/components/ui/section";
 import { ProjectCard } from "@/components/work/project-card";
 import { revealIndex } from "@/lib/motion";
 import { projects } from "@/lib/projects";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Work",
   description:
     "Case studies from Avenor Digital Studio: what each client needed, what we built and the current status of every project.",
-};
+  path: "/work",
+});
 
 export default function WorkPage() {
   return (
@@ -26,7 +28,7 @@ export default function WorkPage() {
         <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
             <li key={project.slug} data-reveal="" style={revealIndex(index)}>
-              <ProjectCard project={project} sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 100vw" />
+              <ProjectCard project={project} headingLevel={2} sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 100vw" />
             </li>
           ))}
         </ul>

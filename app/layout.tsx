@@ -3,6 +3,7 @@ import { Inter, Playfair_Display } from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { RevealObserver } from "@/components/motion/reveal-observer";
+import { siteUrl } from "@/lib/seo";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -19,11 +20,25 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: site.name,
     template: `%s | ${site.name}`,
   },
   description: site.description,
+  applicationName: site.name,
+  openGraph: {
+    siteName: site.name,
+    title: site.name,
+    description: site.description,
+    locale: "en",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.name,
+    description: site.description,
+  },
 };
 
 export const viewport: Viewport = {

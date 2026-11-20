@@ -6,12 +6,14 @@ import { NextSteps } from "@/components/contact/next-steps";
 import { PageHero } from "@/components/layout/page-hero";
 import { Section } from "@/components/ui/section";
 import { contact } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Start a Project",
   description:
     "Tell Avenor Digital Studio about your website, booking or enquiry project. We read every enquiry and reply by email, phone or WhatsApp.",
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

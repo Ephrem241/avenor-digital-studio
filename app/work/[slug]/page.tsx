@@ -14,6 +14,7 @@ import { ProjectGallery } from "@/components/work/project-gallery";
 import { cn } from "@/lib/cn";
 import { revealIndex } from "@/lib/motion";
 import { getProject, projects } from "@/lib/projects";
+import { pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -23,10 +24,13 @@ export async function generateMetadata({ params }: PageProps<"/work/[slug]">): P
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) return {};
-  return {
+  return pageMetadata({
     title: `${project.name} case study`,
     description: `${project.summary} Status: ${project.status === "live" ? "live" : "in progress"}.`,
-  };
+    path: `/work/${project.slug}`,
+    type: "article",
+    image: { url: `/work/${project.slug}/opengraph-image`, alt: `${project.name} case study by Avenor Digital Studio` },
+  });
 }
 
 export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]">) {

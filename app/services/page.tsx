@@ -5,16 +5,21 @@ import { PageHero } from "@/components/layout/page-hero";
 import { ServiceDetail } from "@/components/services/service-detail";
 import { CtaSection } from "@/components/shared/cta-section";
 import { services } from "@/lib/services";
+import { pageMetadata } from "@/lib/seo";
+import { servicesSchema } from "@/lib/structured-data";
+import { JsonLd } from "@/components/seo/json-ld";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Services",
   description:
     "Website design and development, booking systems, enquiry management, automation, SEO and website care for hospitality and beauty businesses.",
-};
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return (
     <>
+      <JsonLd data={servicesSchema(services)} />
       <PageHero
         eyebrow="Services"
         title="What we build for your business."

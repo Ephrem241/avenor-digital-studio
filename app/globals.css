@@ -22,7 +22,9 @@
   --color-gold-700: #806744;
 
   --color-stone-300: #b9b5ac;
-  --color-stone-500: #77766f;
+  /* Darkened from the brief's #77766F, which is 4.0:1 on ivory-100 and fails WCAG AA for
+     body text. #6B6A64 is the same warm grey at 4.8:1 on ivory-100 and 5.1:1 on ivory-50. */
+  --color-stone-500: #6b6a64;
 
   /* Form errors only. Always paired with an icon and text, never colour alone.
      6.6:1 on ivory-50. */

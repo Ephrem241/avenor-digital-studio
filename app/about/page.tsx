@@ -11,12 +11,14 @@ import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { revealIndex } from "@/lib/motion";
 import { services } from "@/lib/services";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About",
   description:
     "Avenor Digital Studio designs and builds websites, booking journeys and enquiry systems for hospitality and beauty businesses. How we work and what we build.",
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

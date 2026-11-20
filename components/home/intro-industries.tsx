@@ -17,7 +17,7 @@ export function IntroIndustries() {
             intro="We plan and build websites that bring in more customers and take routine admin off your team."
           />
           <ButtonLink href="/about" variant="text-dark" arrow>
-            Learn more
+            How we work
           </ButtonLink>
         </div>
 

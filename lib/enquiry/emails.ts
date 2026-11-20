@@ -57,7 +57,7 @@ function htmlBody(intro: string[], rows: Row[], description: string, outro: stri
   const tableRows = rows
     .map(
       ([label, value]) =>
-        `<tr><td style="padding:6px 16px 6px 0;color:#77766f;vertical-align:top;white-space:nowrap">${escapeHtml(label)}</td><td style="padding:6px 0">${escapeHtml(value)}</td></tr>`,
+        `<tr><td style="padding:6px 16px 6px 0;color:#6b6a64;vertical-align:top;white-space:nowrap">${escapeHtml(label)}</td><td style="padding:6px 0">${escapeHtml(value)}</td></tr>`,
     )
     .join("");
   return `<!doctype html><html><body style="margin:0;padding:24px;background:#faf8f4;color:#171717;font:15px/1.6 Arial,sans-serif">
@@ -65,7 +65,7 @@ function htmlBody(intro: string[], rows: Row[], description: string, outro: stri
 <p style="margin:0 0 24px;font:600 13px Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#806744">${escapeHtml(site.name)}</p>
 ${intro.map(paragraph).join("")}
 <table style="border-collapse:collapse;margin:16px 0 24px">${tableRows}</table>
-<p style="margin:0 0 6px;color:#77766f">Project description</p>
+<p style="margin:0 0 6px;color:#6b6a64">Project description</p>
 <p style="margin:0 0 24px;white-space:pre-wrap">${escapeHtml(description)}</p>
 ${outro.map(paragraph).join("")}
 </div></body></html>`;

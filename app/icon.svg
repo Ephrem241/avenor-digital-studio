@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Placeholder Avenor monogram (components/brand/logo.tsx) until the official logo is supplied. -->
+  <rect width="64" height="64" rx="14" fill="#171717"/>
+  <g transform="translate(12 14)">
+    <path d="M20 2 L37 34 H30.5 L20 13.5 L9.5 34 H3 Z" fill="#B99A69"/>
+    <path d="M13.5 26 H29" stroke="#171717" stroke-width="2.4"/>
+    <path d="M11 27.2 C16 22.5 23 21.5 31 23" stroke="#B99A69" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+  </g>
+</svg>

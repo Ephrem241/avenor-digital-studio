@@ -9,14 +9,18 @@ type ProjectCardProps = {
   project: Project;
   /** Passed to next/image `sizes`; depends on the grid the card sits in. */
   sizes?: string;
+  /** h3 by default; h2 when the cards sit directly under the page h1. */
+  headingLevel?: 2 | 3;
   className?: string;
 };
 
 export function ProjectCard({
   project,
   sizes = "(min-width: 1280px) 22vw, (min-width: 768px) 33vw, 100vw",
+  headingLevel = 3,
   className,
 }: ProjectCardProps) {
+  const Heading = headingLevel === 2 ? "h2" : "h3";
   return (
     <Link
       href={`/work/${project.slug}`}
@@ -57,9 +61,9 @@ export function ProjectCard({
       <div className="flex flex-1 flex-col gap-2 p-5">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <h3 className="font-serif text-h4 transition-[translate] duration-[550ms] ease-standard group-hover:translate-x-0.5">
+            <Heading className="font-serif text-h4 transition-[translate] duration-[550ms] ease-standard group-hover:translate-x-0.5">
               {project.name}
-            </h3>
+            </Heading>
             <p className="text-small text-stone-500">{project.industry}</p>
           </div>
           <ArrowRight

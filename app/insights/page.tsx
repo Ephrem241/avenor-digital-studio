@@ -6,12 +6,14 @@ import { ButtonLink } from "@/components/ui/button";
 import { Section } from "@/components/ui/section";
 import { getVisibleArticles } from "@/lib/insights";
 import { revealIndex } from "@/lib/motion";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Insights",
   description:
     "Practical advice for hotels, guesthouses, salons and barbershops on websites, bookings and handling customer enquiries.",
-};
+  path: "/insights",
+});
 
 export default function InsightsPage() {
   const articles = getVisibleArticles();

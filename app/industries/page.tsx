@@ -7,12 +7,14 @@ import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { industries } from "@/lib/industries";
 import { revealIndex } from "@/lib/motion";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Industries",
   description:
     "Websites, booking journeys and enquiry systems for hotels, resorts and tourism operators, and for salons, barbershops, spas and beauty studios.",
-};
+  path: "/industries",
+});
 
 export default function IndustriesPage() {
   return (

@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { JsonLd } from "@/components/seo/json-ld";
 import type { NavItem } from "@/lib/site";
+import { breadcrumbSchema } from "@/lib/structured-data";
 
 type BreadcrumbsProps = {
   /** Trail after Home. The last item is the current page. */
@@ -35,6 +37,7 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
           );
         })}
       </ol>
+      <JsonLd data={breadcrumbSchema(trail)} />
     </nav>
   );
 }

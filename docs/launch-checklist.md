@@ -40,3 +40,12 @@ Drafts are visible in dev and on Vercel preview deployments, and return 404 in p
 - [ ] Budget ranges on the form (`lib/enquiry/options.ts`, USD) are placeholders. Confirm or replace them.
 - [ ] "What happens next" (`components/contact/next-steps.tsx`) promises that a person reads every enquiry and that we reply by the chosen method. Confirm, and add a response time if you want to promise one.
 - [ ] Send one real test enquiry on production. Check both emails arrive and the enquiry appears in the Studio, then delete it.
+
+## SEO and sharing (Phase 7)
+
+- [ ] Set `NEXT_PUBLIC_SITE_URL` on Vercel (Production) to the final domain, then redeploy. Until then canonicals, the sitemap and share cards use the Vercel production alias.
+- [ ] Send the official logo file. The favicon (`app/icon.svg`), Apple touch icon (`app/apple-icon.tsx`), share cards (`lib/og.tsx`) and the Organization `logo` in structured data use the placeholder monogram.
+- [ ] Confirm `areaServed: "Worldwide"` in the Organization structured data (`lib/structured-data.ts`), or give the countries you serve.
+- [ ] Confirm the darker secondary text grey (`--color-stone-500`, #6B6A64 instead of the brief's #77766F, which fails contrast on ivory).
+- [ ] After launch: open `https://<domain>/robots.txt` (should allow) and a preview URL's `/robots.txt` (should disallow), then submit `https://<domain>/sitemap.xml` in Google Search Console.
+- [ ] Check the homepage and `/services` in https://validator.schema.org and a share card in a WhatsApp or LinkedIn message.

@@ -13,7 +13,10 @@ import {
   formatArticleDate,
   getVisibleArticle,
 } from "@/lib/insights";
+import { JsonLd } from "@/components/seo/json-ld";
+import { pageMetadata } from "@/lib/seo";
 import { getServices } from "@/lib/services";
+import { articleSchema } from "@/lib/structured-data";
 
 /**
  * Every slug is listed, drafts included: with Cache Components an empty list is a build
@@ -29,8 +32,14 @@ export async function generateMetadata({ params }: PageProps<"/insights/[slug]">
   if (!article) return {};
 
   return {
-    title: article.title,
-    description: article.description,
+    ...pageMetadata({
+      title: article.title,
+      description: article.description,
+      path: `/insights/${article.slug}`,
+      type: "article",
+      publishedTime: article.date,
+      image: { url: `/insights/${article.slug}/opengraph-image`, alt: article.title },
+    }),
     // Second safeguard: drafts shown on preview deployments are never indexed.
     ...(article.published ? {} : { robots: { index: false, follow: false } }),
   };
@@ -45,6 +54,7 @@ export default async function ArticlePage({ params }: PageProps<"/insights/[slug
 
   return (
     <>
+      {article.published && <JsonLd data={articleSchema(article)} />}
       <PageHero
         eyebrow={articleIndustryLabels[article.industry]}
         title={article.title}
