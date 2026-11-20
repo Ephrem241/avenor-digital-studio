@@ -29,7 +29,7 @@ export function CtaSection({
       </div>
 
       <Container>
-        <div className="flex max-w-[40rem] flex-col items-start gap-6">
+        <div data-reveal="" className="flex max-w-[40rem] flex-col items-start gap-6">
           <h2 id={id} className="max-w-[16ch] text-h2 text-ivory-50">
             {title}
           </h2>

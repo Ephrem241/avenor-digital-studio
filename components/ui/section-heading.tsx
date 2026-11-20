@@ -13,6 +13,8 @@ type SectionHeadingProps = {
   className?: string;
   /** Id for the heading, so a section can point aria-labelledby at it. */
   id?: string;
+  /** Rise in once on scroll (see RevealObserver). Default true. */
+  reveal?: boolean;
 };
 
 const sizeFor = { h1: "text-h1", h2: "text-h2", h3: "text-h3" } as const;
@@ -26,9 +28,12 @@ export function SectionHeading({
   align = "left",
   className,
   id,
+  reveal = true,
 }: SectionHeadingProps) {
   return (
-    <div className={cn("flex flex-col gap-4", align === "center" && "items-center text-center", className)}>
+    <div
+      data-reveal={reveal ? "" : undefined}
+      className={cn("flex flex-col gap-4", align === "center" && "items-center text-center", className)}>
       {eyebrow && <Eyebrow tone={tone}>{eyebrow}</Eyebrow>}
       <Heading id={id} className={cn(sizeFor[Heading], "max-w-[18ch]", tone === "dark" ? "text-ivory-50" : "text-charcoal-950")}>
         {title}

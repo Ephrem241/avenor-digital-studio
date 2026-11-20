@@ -3,6 +3,7 @@ import { ButtonLink } from "@/components/ui/button";
 import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { industries } from "@/lib/industries";
+import { revealIndex } from "@/lib/motion";
 
 export function IntroIndustries() {
   return (
@@ -21,8 +22,8 @@ export function IntroIndustries() {
         </div>
 
         <ul className="grid gap-4 md:grid-cols-2 md:gap-6 lg:col-span-8" aria-label="Industries we serve">
-          {industries.map((industry) => (
-            <li key={industry.slug}>
+          {industries.map((industry, index) => (
+            <li key={industry.slug} data-reveal="" style={revealIndex(index)}>
               <IndustryCard industry={industry} className="h-full" />
             </li>
           ))}

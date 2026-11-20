@@ -31,6 +31,9 @@ export const legalLinks: NavItem[] = [
 
 export const serviceKeywords = ["Websites", "Bookings", "Automation", "Growth"] as const;
 
+/** Words in the homepage service marquee (AGENTS.md §6.3 D). */
+export const marqueeKeywords = ["Websites", "Bookings", "Automation", "SEO", "Growth"] as const;
+
 /** True when `href` is the current page or one of its children. */
 export function isActivePath(pathname: string, href: string): boolean {
   return href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);

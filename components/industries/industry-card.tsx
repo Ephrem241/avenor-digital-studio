@@ -25,7 +25,10 @@ export function IndustryCard({ industry, className }: IndustryCardProps) {
       )}
     >
       {/* Media layer */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10">
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 transition-[scale] duration-[550ms] ease-standard group-hover:scale-[1.03]"
+      >
         {industry.image ? (
           <Image
             src={industry.image.src}

@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 /** Avenor motion tokens (AGENTS.md §6.2). Durations in seconds, distances in px. */
 export const motionTokens = {
   duration: {
@@ -24,3 +26,13 @@ export const motionTokens = {
 } as const;
 
 export type MotionTokens = typeof motionTokens;
+
+/** Inline style for a staggered `[data-reveal]` item (80ms per step, capped in CSS). */
+export function revealIndex(index: number): CSSProperties {
+  return { "--reveal-index": index } as CSSProperties;
+}
+
+/** Inline style that delays one step of the hero entrance. */
+export function heroDelay(ms: number): CSSProperties {
+  return { "--hero-delay": `${ms}ms` } as CSSProperties;
+}

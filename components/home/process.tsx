@@ -1,6 +1,7 @@
 import { IconBadge } from "@/components/ui/icon";
 import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { revealIndex } from "@/lib/motion";
 import { processSteps } from "@/lib/process";
 
 /**
@@ -23,6 +24,8 @@ export function Process() {
           {processSteps.map((step, index) => (
             <li
               key={step.name}
+              data-reveal=""
+              style={revealIndex(index)}
               className="relative flex gap-5 lg:flex-col lg:items-center lg:gap-3 lg:text-center"
             >
               {index < processSteps.length - 1 && (

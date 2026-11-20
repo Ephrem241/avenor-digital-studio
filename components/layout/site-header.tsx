@@ -50,6 +50,7 @@ export function SiteHeader() {
   return (
     <header
       ref={headerRef}
+      data-site-header
       className={cn(
         // No backdrop-filter here: it would become the containing block for the fixed drawer.
         "fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-300 ease-standard",

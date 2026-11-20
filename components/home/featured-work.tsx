@@ -2,6 +2,7 @@ import { ButtonLink } from "@/components/ui/button";
 import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { ProjectCard } from "@/components/work/project-card";
+import { revealIndex } from "@/lib/motion";
 import { featuredProjects } from "@/lib/projects";
 
 export function FeaturedWork() {
@@ -21,8 +22,8 @@ export function FeaturedWork() {
         </div>
 
         <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:col-span-9">
-          {featuredProjects.map((project) => (
-            <li key={project.slug}>
+          {featuredProjects.map((project, index) => (
+            <li key={project.slug} data-reveal="" style={revealIndex(index)}>
               <ProjectCard project={project} />
             </li>
           ))}

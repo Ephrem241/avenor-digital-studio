@@ -179,6 +179,146 @@
   }
 }
 
+/* ------------------------------------------------------------------
+   Motion (AGENTS.md §6). Durations follow lib/motion.ts:
+   fast .2s · smooth .55s · reveal .8s · cinematic 1.2s.
+   Every movement sits behind prefers-reduced-motion: no-preference.
+   ------------------------------------------------------------------ */
+
+@keyframes avenor-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes avenor-rise-in {
+  from {
+    opacity: 0;
+    translate: 0 12px;
+  }
+}
+
+@keyframes avenor-line-in {
+  from {
+    translate: 0 105%;
+  }
+}
+
+@keyframes avenor-media-in {
+  from {
+    opacity: 0;
+    scale: 1.06;
+  }
+}
+
+@keyframes avenor-marquee {
+  to {
+    /* The track holds four identical copies; one copy is a quarter of its width. */
+    translate: -25% 0;
+  }
+}
+
+/* A. Hero entrance. Each element sets --hero-delay inline. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-media {
+    animation: avenor-media-in 1.2s var(--ease-enter) both;
+  }
+  .hero-overlay {
+    animation: avenor-fade-in 0.8s var(--ease-standard) 0.15s both;
+  }
+  .hero-rise {
+    animation: avenor-rise-in 0.8s var(--ease-enter) var(--hero-delay, 0ms) both;
+  }
+  .hero-fade {
+    animation: avenor-fade-in 0.8s var(--ease-standard) var(--hero-delay, 0ms) both;
+  }
+  .hero-line > span {
+    animation: avenor-line-in 0.8s var(--ease-enter) var(--hero-delay, 0ms) both;
+  }
+  /* The header joins at the end of the sequence, on the homepage only. */
+  html:has([data-hero]) [data-site-header] {
+    animation: avenor-fade-in 0.55s var(--ease-standard) 1.1s both;
+  }
+}
+
+/* Mask for one headline line. Padding keeps descenders inside the clip. */
+.hero-line {
+  display: block;
+  overflow: clip;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+.hero-line > span {
+  display: block;
+}
+
+/* B + C. Scroll reveals. Hidden states only apply once RevealObserver has
+   mounted (html[data-reveal-ready]), so content stays visible without JS. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] {
+    --reveal-delay: 0ms;
+    transition:
+      opacity 0.8s var(--ease-enter) var(--reveal-delay),
+      translate 0.8s var(--ease-enter) var(--reveal-delay);
+  }
+  /* The mask target itself never hides: IntersectionObserver treats a fully clipped
+     target as not intersecting. The clip and zoom run on inner layers instead. */
+  [data-reveal="mask"] [data-reveal-media] {
+    transition: clip-path 1.2s var(--ease-enter) var(--reveal-delay);
+  }
+  [data-reveal="mask"] [data-reveal-zoom] {
+    transition: scale 1.2s var(--ease-enter) var(--reveal-delay);
+  }
+
+  /* Stagger only where items sit side by side. */
+  @media (width >= 48rem) {
+    [data-reveal] {
+      --reveal-delay: calc(min(var(--reveal-index, 0), 5) * 80ms);
+    }
+  }
+
+  html[data-reveal-ready] [data-reveal]:not([data-revealed]) {
+    opacity: 0;
+    translate: 0 24px;
+  }
+  html[data-reveal-ready] [data-reveal="mask"]:not([data-revealed]) {
+    opacity: 1;
+    translate: none;
+  }
+  html[data-reveal-ready] [data-reveal="mask"]:not([data-revealed]) [data-reveal-media] {
+    clip-path: inset(0 0 100% 0);
+  }
+  html[data-reveal-ready] [data-reveal="mask"]:not([data-revealed]) [data-reveal-zoom] {
+    scale: 1.08;
+  }
+}
+
+/* D. Service marquee */
+@media (prefers-reduced-motion: no-preference) {
+  .marquee-track {
+    animation: avenor-marquee 40s linear infinite;
+  }
+  .marquee:hover .marquee-track,
+  .marquee:focus-within .marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    width: auto;
+    justify-content: center;
+  }
+  .marquee-track > ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .marquee-track > [data-marquee-copy],
+  .marquee-track li:last-child > [aria-hidden] {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
