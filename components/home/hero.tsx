@@ -12,8 +12,7 @@ export function Hero() {
     <section aria-labelledby="hero-title" className="relative isolate flex min-h-svh overflow-hidden bg-charcoal-950">
       {/* Media layer (placeholder) */}
       <div aria-hidden="true" className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_78%_38%,rgb(185_154_105/0.45),transparent_70%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_90%_85%,rgb(128_103_68/0.35),transparent_70%)]" />
+        <div className="absolute inset-0 bg-warm-light" />
         <div className="absolute top-1/2 left-[62%] hidden size-[min(44vw,640px)] -translate-x-1/2 -translate-y-1/2 rounded-full border border-gold-500/20 md:block" />
         {/* Readability overlay, strongest behind the copy */}
         <div className="absolute inset-0 bg-linear-to-r from-charcoal-950 via-charcoal-950/60 to-transparent" />
@@ -30,7 +29,7 @@ export function Hero() {
 
           <p className="max-w-[34rem] text-body-lg text-ivory-50/85">{site.description}</p>
 
-          <div className="flex w-full flex-col gap-3 min-[25rem]:w-auto min-[25rem]:flex-row min-[25rem]:items-center min-[25rem]:gap-4">
+          <div className="flex w-full flex-col gap-3 min-[30rem]:w-auto min-[30rem]:flex-row min-[30rem]:items-center min-[30rem]:gap-4">
             <ButtonLink href={primaryCta.href} size="lg" arrow>
               {primaryCta.label}
             </ButtonLink>

@@ -127,6 +127,14 @@
   }
 }
 
+/* Warm gold light on charcoal. Stand-in for photography in the hero, CTA and cards. */
+@utility bg-warm-light {
+  background-color: var(--color-charcoal-950);
+  background-image:
+    radial-gradient(ellipse 70% 60% at 78% 38%, rgb(185 154 105 / 0.45), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 90% 85%, rgb(128 103 68 / 0.35), transparent 70%);
+}
+
 /* ------------------------------------------------------------------
    Base
    ------------------------------------------------------------------ */

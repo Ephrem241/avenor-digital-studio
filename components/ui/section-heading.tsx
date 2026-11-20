@@ -11,6 +11,8 @@ type SectionHeadingProps = {
   as?: "h1" | "h2" | "h3";
   align?: "left" | "center";
   className?: string;
+  /** Id for the heading, so a section can point aria-labelledby at it. */
+  id?: string;
 };
 
 const sizeFor = { h1: "text-h1", h2: "text-h2", h3: "text-h3" } as const;
@@ -23,11 +25,12 @@ export function SectionHeading({
   as: Heading = "h2",
   align = "left",
   className,
+  id,
 }: SectionHeadingProps) {
   return (
     <div className={cn("flex flex-col gap-4", align === "center" && "items-center text-center", className)}>
       {eyebrow && <Eyebrow tone={tone}>{eyebrow}</Eyebrow>}
-      <Heading className={cn(sizeFor[Heading], "max-w-[18ch]", tone === "dark" ? "text-ivory-50" : "text-charcoal-950")}>
+      <Heading id={id} className={cn(sizeFor[Heading], "max-w-[18ch]", tone === "dark" ? "text-ivory-50" : "text-charcoal-950")}>
         {title}
       </Heading>
       {intro && (
