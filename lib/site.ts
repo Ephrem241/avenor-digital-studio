@@ -11,6 +11,23 @@ export const site = {
     "We create premium websites, booking experiences and intelligent digital systems for hospitality and beauty businesses.",
 } as const;
 
+/**
+ * Public contact details. `null` values are still to be supplied by the owner and render
+ * as bracketed markers (see docs/launch-checklist.md). Never fill these with guesses.
+ */
+export const contact: {
+  email: string | null;
+  /** Person or company that operates the "Avenor Digital Studio" trading name. */
+  operatorName: string | null;
+  country: string;
+  placeholder: true;
+} = {
+  email: null,
+  operatorName: null,
+  country: "Ethiopia",
+  placeholder: true,
+};
+
 export const primaryCta: NavItem = { label: "Start a Project", href: "/contact" };
 export const secondaryCta: NavItem = { label: "Explore Our Work", href: "/work" };
 
