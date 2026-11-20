@@ -18,6 +18,8 @@ export function IndustryPage({ slug }: { slug: Industry["slug"] }) {
   const industry = getIndustry(slug);
   const relatedServices = getServices(industry.serviceSlugs);
   const relatedProjects = getProjects(industry.projectSlugs);
+  // Preselects the industry on the enquiry form.
+  const contactHref = `${primaryCta.href}?industry=${industry.slug}`;
 
   return (
     <>
@@ -31,7 +33,7 @@ export function IndustryPage({ slug }: { slug: Industry["slug"] }) {
         ]}
         actions={
           <>
-            <ButtonLink href={primaryCta.href} size="lg" arrow>
+            <ButtonLink href={contactHref} size="lg" arrow>
               {primaryCta.label}
             </ButtonLink>
             <ButtonLink href="#what-we-build" variant="text-light">
@@ -127,7 +129,7 @@ export function IndustryPage({ slug }: { slug: Industry["slug"] }) {
 
       <CtaSection
         title={`Planning a new site for your ${industry.slug === "hospitality" ? "property" : "studio"}?`}
-        primary={{ label: "Discuss Your Project", href: primaryCta.href }}
+        primary={{ label: "Discuss Your Project", href: contactHref }}
       />
     </>
   );

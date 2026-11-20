@@ -24,6 +24,10 @@
   --color-stone-300: #b9b5ac;
   --color-stone-500: #77766f;
 
+  /* Form errors only. Always paired with an icon and text, never colour alone.
+     6.6:1 on ivory-50. */
+  --color-error-700: #9f2f1d;
+
   /* Type scale: fluid from the mobile size (375px) to the desktop size (1440px). */
   --text-display: clamp(2.75rem, 1.956rem + 3.38vw, 5rem);
   --text-display--line-height: 1.02;

@@ -68,7 +68,7 @@ export const privacyPolicy: LegalDocument = {
         "your country and industry",
         "the service you're interested in, your budget range and your timeline",
         "a description of your project",
-        "how you'd like us to contact you",
+        "how you'd like us to contact you, and a phone or WhatsApp number if you choose either",
       ],
     },
     {
@@ -81,7 +81,8 @@ export const privacyPolicy: LegalDocument = {
       type: "ul",
       items: [
         "Vercel, which hosts this website",
-        [{ placeholder: "email delivery and enquiry storage providers, added when the enquiry form launches" }],
+        "Sanity, which stores the enquiries you send through the form",
+        "Resend, which delivers our notification and the confirmation email we send you",
       ],
     },
     {
@@ -109,7 +110,11 @@ export const privacyPolicy: LegalDocument = {
     { type: "h2", text: "Security" },
     {
       type: "p",
-      text: "Only the people who need to reply to an enquiry can see it. The passwords and keys for our systems are kept out of the website's code.",
+      text: "Only the people who need to reply to an enquiry can see it, and they have to sign in to do so. The passwords and keys for our systems are kept out of the website's code.",
+    },
+    {
+      type: "p",
+      text: "To stop spam, the form limits how many enquiries can be sent from one connection. For this we keep a scrambled, one-way code made from your IP address, not the address itself.",
     },
     { type: "h2", text: "Changes to this policy" },
     {

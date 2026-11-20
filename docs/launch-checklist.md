@@ -11,7 +11,7 @@ These items are placeholders or drafts. Each one needs the owner's input or appr
 
 - [ ] Have the Privacy Policy and Terms of Service reviewed by someone qualified in Ethiopian law. The "Draft: pending legal review" notice shows outside production only, so **production shows these pages as final**.
 - [ ] Enquiry retention period in the Privacy Policy ("[retention period to be confirmed]").
-- [ ] Email delivery and enquiry storage providers in the Privacy Policy. Fill in during Phase 6, when they are chosen.
+- [x] Email delivery and enquiry storage providers in the Privacy Policy (Sanity and Resend, added in Phase 6).
 - [ ] Ask the reviewer about the data localisation rule in Proclamation No. 1321/2024: the site is hosted by Vercel, outside Ethiopia.
 - [ ] Confirm permission from each client to show their name and screenshots on the site.
 
@@ -30,3 +30,13 @@ Drafts are visible in dev and on Vercel preview deployments, and return 404 in p
 ## Portfolio (`lib/projects.ts`)
 
 - [ ] Hayat Herbal case study copy is written from the brief, not from built work. Confirm or correct it.
+
+## Enquiry form (`/contact`, see `docs/enquiries-setup.md`)
+
+- [ ] Create the Sanity project and a **private** `enquiries` dataset. Confirm it shows "Private" in Manage.
+- [ ] Set every variable in `.env.example` on Vercel (Production and Preview).
+- [ ] Verify the sending domain in Resend; choose `RESEND_FROM_EMAIL` and `ENQUIRY_NOTIFY_EMAIL`.
+- [ ] Deploy the Studio (`cd studio && npm run deploy`) and invite only the people who should see enquiries.
+- [ ] Budget ranges on the form (`lib/enquiry/options.ts`, USD) are placeholders. Confirm or replace them.
+- [ ] "What happens next" (`components/contact/next-steps.tsx`) promises that a person reads every enquiry and that we reply by the chosen method. Confirm, and add a response time if you want to promise one.
+- [ ] Send one real test enquiry on production. Check both emails arrive and the enquiry appears in the Studio, then delete it.
