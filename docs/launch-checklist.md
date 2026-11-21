@@ -49,3 +49,9 @@ Drafts are visible in dev and on Vercel preview deployments, and return 404 in p
 - [ ] Confirm the darker secondary text grey (`--color-stone-500`, #6B6A64 instead of the brief's #77766F, which fails contrast on ivory).
 - [ ] After launch: open `https://<domain>/robots.txt` (should allow) and a preview URL's `/robots.txt` (should disallow), then submit `https://<domain>/sitemap.xml` in Google Search Console.
 - [ ] Check the homepage and `/services` in https://validator.schema.org and a share card in a WhatsApp or LinkedIn message.
+
+## Security and QA (Phase 8)
+
+- [ ] Decide whether to add a Content-Security-Policy. Baseline headers are in `next.config.ts`; a CSP needs nonces or hashes for the inline JSON-LD and Next.js scripts, and switches pages to dynamic rendering if nonces are used. Worth doing once third-party scripts (e.g. analytics) are added.
+- [ ] On a real phone: open and close the menu, tap every CTA, and send the test enquiry above.
+- [ ] Turn on "Reduce motion" in the phone's settings and reload the homepage: nothing should move, nothing should be missing.

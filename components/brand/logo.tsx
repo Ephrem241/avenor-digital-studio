@@ -23,7 +23,7 @@ type LogoProps = {
 
 export function Logo({ compact = false, className }: LogoProps) {
   return (
-    <Link href="/" aria-label="Avenor Digital Studio, home" className={cn("inline-flex items-center gap-3", className)}>
+    <Link href="/" aria-label="Avenor Digital Studio, home" className={cn("inline-flex min-h-11 items-center gap-3", className)}>
       <Monogram className={compact ? "h-7 w-8" : "h-8 w-9"} />
       <span className="flex flex-col leading-none whitespace-nowrap">
         <span className={cn("font-serif tracking-[0.2em] text-ivory-50", compact ? "text-lg" : "text-xl")}>AVENOR</span>

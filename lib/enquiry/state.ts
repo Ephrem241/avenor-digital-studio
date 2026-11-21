@@ -1,4 +1,4 @@
-import type { EnquiryValues, FieldErrors } from "./schema";
+import type { EnquiryValues, FieldErrors } from "./fields";
 
 /** What the enquiry Server Action returns to the form. Only what the UI renders. */
 export type EnquiryState =

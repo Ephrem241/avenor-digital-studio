@@ -52,7 +52,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-svh flex-col">
         <a
           href="#main"
-          className="fixed top-3 left-3 z-[60] -translate-y-20 rounded-control bg-gold-500 px-4 py-2 text-small font-medium text-charcoal-950 transition-transform focus:translate-y-0"
+          className="fixed top-3 left-3 z-[60] inline-flex min-h-11 -translate-y-20 items-center rounded-control bg-gold-500 px-4 text-small font-medium text-charcoal-950 transition-transform focus:translate-y-0"
         >
           Skip to content
         </a>

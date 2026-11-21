@@ -21,7 +21,7 @@ import {
   type EnquiryField,
   type EnquiryValues,
   type FieldErrors,
-} from "@/lib/enquiry/schema";
+} from "@/lib/enquiry/fields";
 import { HONEYPOT_FIELD } from "@/lib/enquiry/spam-fields";
 import { initialEnquiryState } from "@/lib/enquiry/state";
 import { controlClass, describedBy, Field, FieldError, fieldIds, Select } from "./form-field";

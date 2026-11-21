@@ -7,28 +7,23 @@ import {
   timelineOptions,
   values,
 } from "./options";
+import {
+  DESCRIPTION_MAX,
+  DESCRIPTION_MIN,
+  enquiryFields,
+  type EnquiryField,
+  type EnquiryValues,
+  type FieldErrors,
+} from "./fields";
 
-export const DESCRIPTION_MIN = 20;
-export const DESCRIPTION_MAX = 3000;
-
-/** The form fields, in display order. Hidden spam fields are handled separately. */
-export const enquiryFields = [
-  "fullName",
-  "email",
-  "businessName",
-  "website",
-  "country",
-  "industry",
-  "service",
-  "budget",
-  "timeline",
-  "description",
-  "contactMethod",
-  "phone",
-] as const;
-
-export type EnquiryField = (typeof enquiryFields)[number];
-export type EnquiryValues = Record<EnquiryField, string>;
+export {
+  DESCRIPTION_MAX,
+  DESCRIPTION_MIN,
+  enquiryFields,
+  type EnquiryField,
+  type EnquiryValues,
+  type FieldErrors,
+};
 
 /** Adds https:// when the visitor typed a bare domain, then accepts http(s) only. */
 function normaliseUrl(value: string): string {
@@ -86,8 +81,6 @@ export const enquirySchema = z
   });
 
 export type Enquiry = z.output<typeof enquirySchema>;
-
-export type FieldErrors = Partial<Record<EnquiryField, string>>;
 
 /** Reads the form fields as strings; anything missing becomes "". */
 export function readEnquiryValues(formData: FormData): EnquiryValues {
