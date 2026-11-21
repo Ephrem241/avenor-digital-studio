@@ -24,7 +24,7 @@ export function Process() {
           {processSteps.map((step, index) => (
             <li
               key={step.name}
-              data-reveal=""
+              data-reveal="" suppressHydrationWarning
               style={revealIndex(index)}
               className="relative flex gap-5 lg:flex-col lg:items-center lg:gap-3 lg:text-center"
             >

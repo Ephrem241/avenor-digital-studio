@@ -36,7 +36,7 @@ function GalleryItem({ image, index, sizes }: { image: ProjectImage; index: numb
     <li>
       <figure className="flex flex-col gap-3">
         <div
-          data-reveal="mask"
+          data-reveal="mask" suppressHydrationWarning
           style={revealIndex(index)}
           className={cn(
             "relative overflow-hidden border border-ivory-200 bg-charcoal-900",

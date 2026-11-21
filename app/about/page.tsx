@@ -38,7 +38,7 @@ export default function AboutPage() {
             title="Built around the moment a customer decides."
             className="lg:col-span-5"
           />
-          <div data-reveal="" className="flex flex-col gap-5 text-body-lg text-charcoal-950/85 lg:col-span-7">
+          <div data-reveal="" suppressHydrationWarning className="flex flex-col gap-5 text-body-lg text-charcoal-950/85 lg:col-span-7">
             <p>
               Most of our clients sell something people book ahead: a room, a treatment, a haircut with a particular
               barber. We plan each site around that choice, so visitors can see what you offer, what it costs if you
@@ -74,7 +74,7 @@ export default function AboutPage() {
           />
           <ul className="grid gap-x-8 sm:grid-cols-2 lg:col-span-7">
             {services.map((service, index) => (
-              <li key={service.slug} data-reveal="" style={revealIndex(index)}>
+              <li key={service.slug} data-reveal="" suppressHydrationWarning style={revealIndex(index)}>
                 <Link
                   href={`/services#${service.slug}`}
                   className="group flex min-h-16 items-center gap-4 border-b border-ivory-200 py-4 text-charcoal-950 transition-colors hover:text-gold-700"

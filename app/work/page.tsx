@@ -27,8 +27,14 @@ export default function WorkPage() {
       <Section tone="light-alt" aria-label="Projects">
         <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
-            <li key={project.slug} data-reveal="" style={revealIndex(index)}>
-              <ProjectCard project={project} headingLevel={2} sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 100vw" />
+            <li key={project.slug} data-reveal="" suppressHydrationWarning style={revealIndex(index)}>
+              <ProjectCard
+                project={project}
+                headingLevel={2}
+                // The first row sits just under the hero on desktop; load those covers immediately.
+                loading={index < 3 ? "eager" : undefined}
+                sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 100vw"
+              />
             </li>
           ))}
         </ul>

@@ -8,7 +8,7 @@ type CaseStudySectionProps = {
 /** Editorial row: label on the left, text on the right; stacked on small screens. */
 export function CaseStudySection({ label, children }: CaseStudySectionProps) {
   return (
-    <div data-reveal="" className="grid gap-4 border-t border-ivory-200 py-10 md:grid-cols-12 md:gap-8 lg:py-14">
+    <div data-reveal="" suppressHydrationWarning className="grid gap-4 border-t border-ivory-200 py-10 md:grid-cols-12 md:gap-8 lg:py-14">
       <h2 className="font-sans text-small font-medium tracking-[0.18em] text-gold-700 uppercase md:col-span-4 lg:col-span-3">
         {label}
       </h2>

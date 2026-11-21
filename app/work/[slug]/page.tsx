@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { ArrowUpRight } from "lucide-react";
-import { PageHero } from "@/components/layout/page-hero";
+import { PageHero, PageHeroFallback } from "@/components/layout/page-hero";
 import { CtaSection } from "@/components/shared/cta-section";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
@@ -33,7 +34,20 @@ export async function generateMetadata({ params }: PageProps<"/work/[slug]">): P
   });
 }
 
-export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]">) {
+/**
+ * The page itself stays synchronous so the route's App Shell doesn't depend on the URL.
+ * `params` is read inside the Suspense boundary (Next.js instant navigation). Every slug
+ * comes from generateStaticParams, so the full page is still prerendered at build time.
+ */
+export default function CaseStudyPage({ params }: PageProps<"/work/[slug]">) {
+  return (
+    <Suspense fallback={<PageHeroFallback />}>
+      <CaseStudy params={params} />
+    </Suspense>
+  );
+}
+
+async function CaseStudy({ params }: Pick<PageProps<"/work/[slug]">, "params">) {
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) notFound();
@@ -76,7 +90,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
         <div className="bg-linear-to-b from-charcoal-950 from-50% to-ivory-50 to-50%">
           <Container>
             <div
-              data-reveal="mask"
+              data-reveal="mask" suppressHydrationWarning
               className={cn(
                 "relative overflow-hidden rounded-media bg-charcoal-900",
                 project.cover ? "aspect-[16/10] md:aspect-[16/9]" : "aspect-[16/9] md:aspect-[16/5]",
@@ -89,7 +103,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
                       src={project.cover.src}
                       alt={project.cover.alt}
                       fill
-                      priority
+                      preload
                       sizes="(min-width: 1440px) 1312px, 100vw"
                       className="object-cover object-top-left"
                     />
@@ -140,7 +154,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
         <Section tone="dark" aria-label="Deliverables and technology">
           <div className="grid gap-12 md:grid-cols-2 md:gap-16">
             {project.deliverables.length > 0 && (
-              <div data-reveal="" className="flex flex-col gap-5">
+              <div data-reveal="" suppressHydrationWarning className="flex flex-col gap-5">
                 <h2 className="text-h3 text-ivory-50">What we delivered</h2>
                 <ul className="flex flex-col border-t border-ivory-50/10">
                   {project.deliverables.map((item) => (
@@ -152,7 +166,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
               </div>
             )}
             {project.technology.length > 0 && (
-              <div data-reveal="" style={revealIndex(1)} className="flex flex-col gap-5">
+              <div data-reveal="" suppressHydrationWarning style={revealIndex(1)} className="flex flex-col gap-5">
                 <h2 className="text-h3 text-ivory-50">Built with</h2>
                 <ul className="flex flex-wrap gap-2">
                   {project.technology.map((item) => (
@@ -175,7 +189,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
           <SectionHeading id="related-title" eyebrow="More work" title="Other projects." />
           <ul className="grid gap-6 md:grid-cols-2">
             {related.map((item, index) => (
-              <li key={item.slug} data-reveal="" style={revealIndex(index)}>
+              <li key={item.slug} data-reveal="" suppressHydrationWarning style={revealIndex(index)}>
                 <ProjectCard project={item} sizes="(min-width: 768px) 45vw, 100vw" />
               </li>
             ))}

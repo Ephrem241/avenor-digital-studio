@@ -16,7 +16,7 @@ export function ServiceDetail({ service, index, tone = "light" }: ServiceDetailP
   return (
     <Section id={service.slug} tone={tone} aria-labelledby={titleId}>
       <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
-        <div data-reveal="" className="flex flex-col items-start gap-5 lg:col-span-5">
+        <div data-reveal="" suppressHydrationWarning className="flex flex-col items-start gap-5 lg:col-span-5">
           <div className="flex items-center gap-4">
             <Icon name={service.icon} className="size-9 text-gold-700" />
             <span aria-hidden="true" className="text-caption font-medium tracking-[0.18em] text-gold-700">

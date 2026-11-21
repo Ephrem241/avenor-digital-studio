@@ -31,13 +31,13 @@ export default function InsightsPage() {
         {articles.length > 0 ? (
           <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {articles.map((article, index) => (
-              <li key={article.slug} data-reveal="" style={revealIndex(index)}>
+              <li key={article.slug} data-reveal="" suppressHydrationWarning style={revealIndex(index)}>
                 <ArticleCard article={article} />
               </li>
             ))}
           </ul>
         ) : (
-          <div data-reveal="" className="flex max-w-[40rem] flex-col items-start gap-5">
+          <div data-reveal="" suppressHydrationWarning className="flex max-w-[40rem] flex-col items-start gap-5">
             <p className="text-h4 font-serif text-charcoal-950">
               Articles for hospitality and beauty businesses are on the way.
             </p>

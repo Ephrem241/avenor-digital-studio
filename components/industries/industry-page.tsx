@@ -56,7 +56,7 @@ export function IndustryPage({ slug }: { slug: Industry["slug"] }) {
             {industry.challenges.map((challenge, index) => (
               <li
                 key={challenge.title}
-                data-reveal=""
+                data-reveal="" suppressHydrationWarning
                 style={revealIndex(index)}
                 className="flex flex-col gap-3 bg-ivory-50 p-6 lg:p-8"
               >
@@ -79,7 +79,7 @@ export function IndustryPage({ slug }: { slug: Industry["slug"] }) {
             eyebrow="What we build"
             title={`Services for ${industry.title.toLowerCase()} businesses.`}
           />
-          <ul data-reveal="" className="grid gap-px overflow-hidden bg-ivory-50/10 sm:grid-cols-2">
+          <ul data-reveal="" suppressHydrationWarning className="grid gap-px overflow-hidden bg-ivory-50/10 sm:grid-cols-2">
             {relatedServices.map((service) => (
               <li key={service.slug} className="bg-charcoal-950">
                 <Link
@@ -113,7 +113,7 @@ export function IndustryPage({ slug }: { slug: Industry["slug"] }) {
           {relatedProjects.length > 0 ? (
             <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {relatedProjects.map((project, index) => (
-                <li key={project.slug} data-reveal="" style={revealIndex(index)}>
+                <li key={project.slug} data-reveal="" suppressHydrationWarning style={revealIndex(index)}>
                   <ProjectCard project={project} />
                 </li>
               ))}

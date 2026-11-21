@@ -19,6 +19,19 @@ type PageHeroProps = {
 };
 
 /**
+ * Placeholder with the hero's background and height, shown for a moment while a page that
+ * reads URL params streams in on client navigation. Keeps the dark band in place, no layout jump.
+ */
+export function PageHeroFallback() {
+  return (
+    <div
+      aria-hidden="true"
+      className="min-h-[28rem] bg-charcoal-950 pt-(--header-height) md:min-h-[32rem] lg:min-h-[36rem]"
+    />
+  );
+}
+
+/**
  * Opening band for inner pages: charcoal with the warm-light treatment fading in
  * from the right, serif H1, and room for the fixed header above.
  */
@@ -38,7 +51,7 @@ export function PageHero({ eyebrow, title, intro, breadcrumbs, actions, children
       <Container>
         <div className="flex flex-col gap-8">
           {breadcrumbs && <Breadcrumbs items={breadcrumbs} />}
-          <div data-reveal="" className="flex max-w-[52rem] flex-col items-start gap-5">
+          <div data-reveal="" suppressHydrationWarning className="flex max-w-[52rem] flex-col items-start gap-5">
             {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
             <h1 className="max-w-[18ch] text-h1 text-ivory-50">{title}</h1>
             {intro && <p className="reading-width text-body-lg text-ivory-50/80">{intro}</p>}

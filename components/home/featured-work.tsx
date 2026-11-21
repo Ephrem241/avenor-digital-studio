@@ -23,7 +23,7 @@ export function FeaturedWork() {
 
         <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:col-span-9">
           {featuredProjects.map((project, index) => (
-            <li key={project.slug} data-reveal="" style={revealIndex(index)}>
+            <li key={project.slug} data-reveal="" suppressHydrationWarning style={revealIndex(index)}>
               <ProjectCard project={project} />
             </li>
           ))}

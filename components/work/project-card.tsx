@@ -11,6 +11,8 @@ type ProjectCardProps = {
   sizes?: string;
   /** h3 by default; h2 when the cards sit directly under the page h1. */
   headingLevel?: 2 | 3;
+  /** "eager" for a card that is above the fold on load, so its cover isn't lazy-loaded. */
+  loading?: "eager" | "lazy";
   className?: string;
 };
 
@@ -18,6 +20,7 @@ export function ProjectCard({
   project,
   sizes = "(min-width: 1280px) 22vw, (min-width: 768px) 33vw, 100vw",
   headingLevel = 3,
+  loading,
   className,
 }: ProjectCardProps) {
   const Heading = headingLevel === 2 ? "h2" : "h3";
@@ -31,7 +34,7 @@ export function ProjectCard({
     >
       {/* Masked reveal on scroll. The observed box stays unclipped (a clipped target never
           intersects); the clip runs on [data-reveal-media] and the zoom on [data-reveal-zoom]. */}
-      <div data-reveal="mask" className="relative aspect-[16/10] overflow-hidden bg-charcoal-900">
+      <div data-reveal="mask" suppressHydrationWarning className="relative aspect-[16/10] overflow-hidden bg-charcoal-900">
         <div data-reveal-media="" className="absolute inset-0">
           <div data-reveal-zoom="" className="absolute inset-0">
             {project.cover ? (
@@ -39,6 +42,7 @@ export function ProjectCard({
                 src={project.cover.src}
                 alt={project.cover.alt}
                 fill
+                loading={loading}
                 sizes={sizes}
                 className="object-cover object-top-left transition-[scale] duration-[550ms] ease-standard group-hover:scale-[1.03]"
               />

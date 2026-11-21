@@ -13,7 +13,7 @@ export function Principles() {
           {principles.map((principle, index) => (
             <li
               key={principle.title}
-              data-reveal=""
+              data-reveal="" suppressHydrationWarning
               style={revealIndex(index)}
               className="flex flex-col gap-3 border-t border-ivory-200 pt-6"
             >

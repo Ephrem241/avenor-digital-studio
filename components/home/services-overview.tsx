@@ -28,7 +28,7 @@ export function ServicesOverview() {
         </div>
 
         {/* Hairlines between items come from the 1px gap showing the list background. */}
-        <ul data-reveal="" className="grid grid-cols-2 gap-px overflow-hidden bg-ivory-50/10 lg:col-span-7 lg:grid-cols-3">
+        <ul data-reveal="" suppressHydrationWarning className="grid grid-cols-2 gap-px overflow-hidden bg-ivory-50/10 lg:col-span-7 lg:grid-cols-3">
           {services.map((service) => (
             <li key={service.slug} className="bg-charcoal-950">
               <Link

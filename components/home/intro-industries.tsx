@@ -23,7 +23,7 @@ export function IntroIndustries() {
 
         <ul className="grid gap-4 md:grid-cols-2 md:gap-6 lg:col-span-8" aria-label="Industries we serve">
           {industries.map((industry, index) => (
-            <li key={industry.slug} data-reveal="" style={revealIndex(index)}>
+            <li key={industry.slug} data-reveal="" suppressHydrationWarning style={revealIndex(index)}>
               <IndustryCard industry={industry} className="h-full" />
             </li>
           ))}

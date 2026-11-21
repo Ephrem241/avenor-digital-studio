@@ -32,7 +32,7 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <div
-      data-reveal={reveal ? "" : undefined}
+      data-reveal={reveal ? "" : undefined} suppressHydrationWarning
       className={cn("flex flex-col gap-4", align === "center" && "items-center text-center", className)}>
       {eyebrow && <Eyebrow tone={tone}>{eyebrow}</Eyebrow>}
       <Heading id={id} className={cn(sizeFor[Heading], "max-w-[18ch]", tone === "dark" ? "text-ivory-50" : "text-charcoal-950")}>

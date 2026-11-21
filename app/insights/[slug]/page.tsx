@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { DraftPill } from "@/components/content/draft-pill";
 import { RichText } from "@/components/content/rich-text";
-import { PageHero } from "@/components/layout/page-hero";
+import { PageHero, PageHeroFallback } from "@/components/layout/page-hero";
 import { CtaSection } from "@/components/shared/cta-section";
 import { ButtonLink } from "@/components/ui/button";
 import { Section } from "@/components/ui/section";
@@ -45,7 +46,16 @@ export async function generateMetadata({ params }: PageProps<"/insights/[slug]">
   };
 }
 
-export default async function ArticlePage({ params }: PageProps<"/insights/[slug]">) {
+/** Synchronous page with `params` read inside Suspense; see app/work/[slug]/page.tsx. */
+export default function ArticlePage({ params }: PageProps<"/insights/[slug]">) {
+  return (
+    <Suspense fallback={<PageHeroFallback />}>
+      <Article params={params} />
+    </Suspense>
+  );
+}
+
+async function Article({ params }: Pick<PageProps<"/insights/[slug]">, "params">) {
   const { slug } = await params;
   const article = getVisibleArticle(slug);
   if (!article) notFound();

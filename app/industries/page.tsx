@@ -39,7 +39,7 @@ export default function IndustriesPage() {
           />
           <ul className="grid gap-4 md:grid-cols-2 md:gap-6">
             {industries.map((industry, index) => (
-              <li key={industry.slug} data-reveal="" style={revealIndex(index)}>
+              <li key={industry.slug} data-reveal="" suppressHydrationWarning style={revealIndex(index)}>
                 <IndustryCard industry={industry} className="h-full" />
               </li>
             ))}
